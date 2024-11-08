@@ -1,0 +1,119 @@
+/* src/assets/styles/global.css */
+html {
+    scroll-behavior: smooth;
+  }
+  
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    background-color: #f8f5f5;
+  }
+  
+  header {
+    background: #4495a7;
+    color: #fff;
+    padding: 5px;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: end;
+}
+
+header ul li {
+    margin: 0 15px;
+    padding: 5px;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.0rem;
+}
+
+header a:hover{
+    color: #97ddec;;
+}
+header img{
+    width: 3em;
+
+}
+
+nav img{
+    width: 100%;  
+}
+
+nav li:hover{
+    border-radius: 5px;
+    color: #242323;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px #0e0d0dc5;
+    transition: background-color 0.3s ease;
+  
+  }
+nav h1{
+    font-family: "Gowun Batang", serif;
+    font-size: 60px;
+    position: absolute;
+    margin-top: 3em;
+    margin-left: 150px;
+    color: #f4f4f4;
+    text-transform: uppercase;
+    
+
+}
+
+nav h3{
+    font-family: "Gowun Batang", serif;
+    font-size: 24px;
+    margin: 10px 0;
+    position: absolute;
+    margin-top: 11em;
+    margin-left: 150px;
+    color: #f4f4f4;
+    
+}
+
+
+
+.features {
+    padding: 50px 0;
+    background: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.feature {
+    background: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    
+}
+
+footer a{
+    color: #4495a7;
+    text-decoration: none;
+
+}
+img {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  img:hover {
+    transform: scale(1.05);
+  }
