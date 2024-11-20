@@ -9,6 +9,7 @@ import Section3 from './components/Section3'
 import BannerSection from './components/BannerSection'
 import { ScrollToTop } from './components/ScrollToTop';
 
+
 function App() {
   return (
     <Router>

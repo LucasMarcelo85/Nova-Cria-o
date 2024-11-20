@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import banner1 from '../assets/images/sabado.jpeg';
 import banner2 from '../assets/images/Servir.jpeg';
 import banner3 from '../assets/images/quintas.jpeg';

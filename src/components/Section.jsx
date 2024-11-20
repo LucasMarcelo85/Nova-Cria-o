@@ -32,7 +32,13 @@ const Section = () => {
     };
 
     fetchLatestVideo();
-  }, []);
+
+    // A cada 10 minutos, verifica o feed novamente
+    const intervalId = setInterval(fetchLatestVideo, 600000);
+
+    // Limpeza do intervalo quando o componente for desmontado
+    return () => clearInterval(intervalId);
+  }, []); // O array vazio significa que o useEffect será executado uma vez, quando o componente for montado
 
   return (
     <Box
