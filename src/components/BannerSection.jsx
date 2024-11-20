@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Box } from '@mui/material';
 import banner1 from '../assets/images/sabado.jpeg';
 import banner2 from '../assets/images/Servir.jpeg';
