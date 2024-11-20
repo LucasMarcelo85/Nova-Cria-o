@@ -1,9 +1,40 @@
 import { Typography, Button, Box } from "@mui/material";
-
+import { useEffect, useState } from "react";
 
 const Section = () => {
+  const [latestVideoId, setLatestVideoId] = useState(null);
+
+  useEffect(() => {
+    // Função para pegar o último vídeo do feed RSS com o proxy
+    const fetchLatestVideo = async () => {
+      const feedUrl = 'http://localhost:5000/proxy'; // Usando o servidor proxy
+
+      try {
+        const response = await fetch(feedUrl);
+        const data = await response.text(); // A resposta será em formato XML
+
+        // Parseia o XML
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(data, "text/xml");
+
+        // Pegando o ID do vídeo mais recente
+        const latestVideoEntry = xmlDoc.getElementsByTagName('entry')[0];
+        const videoId = latestVideoEntry.getElementsByTagName('yt:videoId')[0]?.textContent;
+
+        if (videoId) {
+          setLatestVideoId(videoId); // Atualiza o ID do vídeo
+        } else {
+          console.error('Não foi possível encontrar o ID do vídeo');
+        }
+      } catch (error) {
+        console.error("Erro ao buscar o vídeo:", error);
+      }
+    };
+
+    fetchLatestVideo();
+  }, []);
+
   return (
-    
     <Box
       mt={4}
       style={{
@@ -29,7 +60,6 @@ const Section = () => {
       }}
     >
       <Typography variant="h4" style={{ fontSize: "1.5rem", fontWeight: "600", color: "#3b8ea7" }}>
-        
         Igreja Nova Criação
       </Typography>
       <Typography variant="body1" style={{ marginTop: "10px", color: "#3b8ea7", textAlign: "center" }}>
@@ -55,24 +85,24 @@ const Section = () => {
         Visitar Canal no YouTube
       </Button>
 
-      <Box mt={3} style={{ width: "100%", paddingTop: "56.25%", position: "relative" }}>
-        <iframe
-          src="https://www.youtube.com/embed/wD4LU-bu7C0"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            borderRadius: "12px",
-          }}
-        ></iframe>
-        
-      </Box>
-      
+      {latestVideoId && (
+        <Box mt={3} style={{ width: "100%", paddingTop: "56.25%", position: "relative" }}>
+          <iframe
+            src={`https://www.youtube.com/embed/${latestVideoId}`}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              borderRadius: "12px",
+            }}
+          ></iframe>
+        </Box>
+      )}
     </Box>
   );
 };
